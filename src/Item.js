@@ -1,13 +1,13 @@
 import {createElement} from "react";
 
-export function Item({ item }) {
+export function Item({ title, url }) {
     return createElement(
         'li',
         null,
         createElement(
             'a',
-            { href: item.url, target: '_blank' },
-            item.title,
+            { href: url, target: '_blank' },
+            title,
         ),
     );
 }

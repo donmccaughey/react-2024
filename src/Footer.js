@@ -5,6 +5,6 @@ export function Footer({ news }) {
     return createElement(
         'footer',
         null,
-        createElement(BottomNav, { totalPages: news.total_pages }),
+        createElement(BottomNav, { ...news }),
     );
 }

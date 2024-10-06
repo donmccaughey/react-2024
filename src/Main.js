@@ -5,6 +5,6 @@ export function Main({ news }) {
     return createElement(
         'main',
         null,
-        createElement(Items, { items: news.items }),
+        createElement(Items, { ...news }),
     );
 }
