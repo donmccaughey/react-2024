@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 from http.server import SimpleHTTPRequestHandler
 from socketserver import TCPServer
+from subprocess import Popen
 from urllib.request import Request, urlopen
 
 
+ESBUILD_COMMAND = [
+    'node_modules/.bin/esbuild',
+    '--bundle', '--sourcemap', '--outfile=tmp/news.js',
+    '--serve=8001', '--servedir=tmp',
+    '--watch',
+    'src/index.js',
+]
 PORT = 9000
 
 
@@ -47,10 +55,22 @@ class ProxyHandler(SimpleHTTPRequestHandler):
             self.send_error(500, f'Proxy Error: {e}')
 
 
+class Server(TCPServer):
+    allow_reuse_address = True
+
+
 def main():
-    with TCPServer(('', PORT), ProxyHandler) as server:
-        print(f'Serving on port {PORT}')
-        server.serve_forever()
+    print('Starting esbuild server...')
+    esbuild_process = Popen(ESBUILD_COMMAND)
+    try:
+        with Server(('', PORT), ProxyHandler) as server:
+            print(f'Serving on port {PORT}')
+            server.serve_forever()
+    except KeyboardInterrupt:
+        print('Shutting down...')
+    finally:
+        esbuild_process.terminate()
+        esbuild_process.wait()
 
 
 if __name__ == '__main__':
