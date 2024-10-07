@@ -6,5 +6,7 @@ export function Items({ items }) {
         createElement(Item, { key: item.seq_id, ...item })
     );
 
-    return createElement('ol', null, listItems);
+    return createElement('ol', null,
+        ...listItems,
+    );
 }
