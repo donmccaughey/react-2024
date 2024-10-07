@@ -1,5 +1,5 @@
-import {createElement} from "react";
-import {Items} from "./Items";
+import { createElement } from 'react';
+import { Items } from './Items';
 
 export function Main({ news }) {
     return createElement(

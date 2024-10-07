@@ -1,5 +1,5 @@
-import {createElement} from "react";
-import {BottomNav} from "./BottomNav";
+import { createElement } from 'react';
+import { BottomNav } from './BottomNav';
 
 export function Footer({ news }) {
     return createElement(

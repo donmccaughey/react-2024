@@ -1,19 +1,19 @@
-const errorState = {
+export const emptyNews = {
     items: [
         {
             seq_id: 0,
-            title: 'Error...',
+            title: 'Loading...',
             url: '#',
         }
     ],
     total_pages: 1,
 };
 
-export const initialState = {
+const newsError = {
     items: [
         {
             seq_id: 0,
-            title: 'Loading...',
+            title: 'Error...',
             url: '#',
         }
     ],
@@ -28,11 +28,11 @@ export async function getNews() {
         });
         if (!response.ok) {
             console.error(`Error ${response.status}: ${response.statusText}`);
-            return errorState;
+            return newsError;
         }
         return await response.json();
     } catch (error) {
         console.error(error);
-        return errorState;
+        return newsError;
     }
 }

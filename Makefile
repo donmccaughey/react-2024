@@ -19,6 +19,7 @@ tmp/index.html : src/index.html $$(dir $$@)
 
 
 sources := \
+	src/api.js \
 	src/App.js \
 	src/BottomNav.js \
 	src/Footer.js \

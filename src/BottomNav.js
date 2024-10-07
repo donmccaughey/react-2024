@@ -1,4 +1,4 @@
-import {createElement} from "react";
+import { createElement } from 'react';
 
 export function BottomNav({ total_pages }) {
     return createElement(
