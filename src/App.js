@@ -4,6 +4,17 @@ import {Main} from './Main'
 import {Footer} from './Footer'
 
 
+const errorState = {
+    items: [
+        {
+            seq_id: 0,
+            title: 'Error...',
+            url: '#',
+        }
+    ],
+    total_pages: 1,
+};
+
 const initialState = {
     items: [
         {
@@ -20,12 +31,7 @@ export function App() {
     const [news, setNews] = useState(initialState);
 
     useEffect(() => {
-        fetch('/api/', {
-            headers: { Accept: 'application/json' },
-        })
-        .then(response => response.json())
-        .then(data => setNews(data))
-        .catch(error => console.log('Error fetching news:', error));
+        getNews().then(news => setNews(news));
     }, []);
 
     return [
@@ -33,4 +39,21 @@ export function App() {
         createElement(Main, { key: 'main', news }),
         createElement(Footer, { key: 'footer', news }),
     ];
+}
+
+
+async function getNews() {
+    try {
+        const response = await fetch('/api/', {
+            headers: { Accept: 'application/json' },
+        });
+        if (!response.ok) {
+            console.error(`Error ${response.status}: ${response.statusText}`);
+            return errorState;
+        }
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+        return errorState;
+    }
 }
