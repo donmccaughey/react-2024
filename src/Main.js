@@ -1,8 +1,14 @@
 import { createElement } from 'react';
-import { Items } from './Items';
+import {Item} from "./Item";
 
-export function Main({ news }) {
+export function Main({ items }) {
+    let listItems = items.map((item) =>
+        createElement(Item, { key: item.seq_id, ...item })
+    );
+
     return createElement('main', null,
-        createElement(Items, { ...news }),
+        createElement('ol', null,
+            ...listItems,
+        )
     );
 }

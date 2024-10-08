@@ -21,14 +21,11 @@ tmp/index.html : src/index.html $$(dir $$@)
 sources := \
 	src/api.js \
 	src/App.js \
-	src/BottomNav.js \
 	src/Footer.js \
 	src/Header.js \
 	src/index.js \
 	src/Item.js \
-	src/Items.js \
-	src/Main.js \
-	src/TopNav.js
+	src/Main.js
 
 
 tmp/news.js : $(sources) $$(dir $$@) package-lock.json

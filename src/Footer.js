@@ -1,8 +1,11 @@
 import { createElement } from 'react';
-import { BottomNav } from './BottomNav';
 
-export function Footer({ news }) {
+export function Footer({ total_pages }) {
     return createElement('footer', null,
-        createElement(BottomNav, { ...news }),
+        createElement('nav', null,
+            createElement('p', null,
+                'page 1 of ' + total_pages,
+            ),
+        ),
     );
 }

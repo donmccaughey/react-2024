@@ -22,8 +22,8 @@ export function App() {
     }, []);
 
     return [
-        createElement(Header, { key: 'header' }),
-        createElement(Main, { key: 'main', news }),
-        createElement(Footer, { key: 'footer', news }),
+        createElement(Header, { key: 'header', ...news }),
+        createElement(Main, { key: 'main', ...news }),
+        createElement(Footer, { key: 'footer', ...news }),
     ];
 }
