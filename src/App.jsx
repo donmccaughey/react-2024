@@ -1,4 +1,5 @@
-import { createElement, useEffect, useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react';
 import { getNews, emptyNews } from './api';
 import { Header } from './Header'
 import { Main } from './Main'
@@ -21,9 +22,11 @@ export function App() {
         return () => clearInterval(intervalId);
     }, []);
 
-    return [
-        createElement(Header, { key: 'header', ...news }),
-        createElement(Main, { key: 'main', ...news }),
-        createElement(Footer, { key: 'footer', ...news }),
-    ];
+    return (
+        <>
+            <Header { ...news } />
+            <Main { ...news } />
+            <Footer { ...news } />
+        </>
+    );
 }
