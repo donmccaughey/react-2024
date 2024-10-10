@@ -1,7 +1,7 @@
 import React from 'react';
 import { ago } from './ago';
 
-export function Header({ modified, now }) {
+export function Header({news: {modified}, now}) {
     return (
         <header>
             <h1>React News</h1>

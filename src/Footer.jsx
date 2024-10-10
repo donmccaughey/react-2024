@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Footer({ total_pages }) {
+export function Footer({news: {total_pages}}) {
     return (
         <footer>
             <nav>

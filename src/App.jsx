@@ -27,11 +27,15 @@ export function App() {
         return () => clearInterval(intervalId);
     }, []);
 
+    const props = {
+        news,
+        now,
+    };
     return (
         <>
-            <Header { ...news} now={now} />
-            <Main { ...news } now={now} />
-            <Footer { ...news} now={now} />
+            <Header {...props} />
+            <Main {...props} />
+            <Footer {...props} />
         </>
     );
 }
