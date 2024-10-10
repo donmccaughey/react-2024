@@ -13,15 +13,17 @@ export function App() {
     const [news, setNews] = useState(emptyNews);
     const [now, setNow] = useState(Date.now());
 
-    useEffect(() => {
+    const updateNews = () => {
         getNews()
             .then(setNews)
             .then(() => setNow(Date.now()));
+    }
+
+    useEffect(() => {
+        updateNews();
 
         const intervalId = setInterval(() => {
-            getNews()
-                .then(setNews)
-                .then(() => setNow(Date.now()));
+            updateNews();
         }, GET_NEWS_INTERVAL_MS);
 
         return () => clearInterval(intervalId);
