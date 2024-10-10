@@ -15,6 +15,7 @@ tmp/index.html : src/index.html $$(dir $$@)
 
 
 sources := \
+	src/ago.js \
 	src/api.js \
 	src/App.jsx \
 	src/Footer.jsx \

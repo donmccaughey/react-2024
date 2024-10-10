@@ -1,11 +1,14 @@
 import React from 'react';
+import { ago } from './ago';
 
-export function Header() {
+export function Header({ modified, now }) {
     return (
         <header>
             <h1>React News</h1>
             <nav>
-                <p>updated 0 minutes ago</p>
+                <p>
+                    updated <time dateTime={modified}>{ago(now, modified)}</time>
+                </p>
             </nav>
         </header>
     );

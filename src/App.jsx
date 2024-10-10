@@ -6,17 +6,22 @@ import { Main } from './Main'
 import { Footer } from './Footer'
 
 
-const GET_NEWS_INTERVAL_MS = 5 * 60 * 1000;
+const GET_NEWS_INTERVAL_MS = 60 * 1000;
 
 
 export function App() {
     const [news, setNews] = useState(emptyNews);
+    const [now, setNow] = useState(Date.now());
 
     useEffect(() => {
-        getNews().then(setNews);
+        getNews()
+            .then(setNews)
+            .then(() => setNow(Date.now()));
 
         const intervalId = setInterval(() => {
-            getNews().then(setNews);
+            getNews()
+                .then(setNews)
+                .then(() => setNow(Date.now()));
         }, GET_NEWS_INTERVAL_MS);
 
         return () => clearInterval(intervalId);
@@ -24,9 +29,9 @@ export function App() {
 
     return (
         <>
-            <Header { ...news } />
-            <Main { ...news } />
-            <Footer { ...news } />
+            <Header { ...news} now={now} />
+            <Main { ...news } now={now} />
+            <Footer { ...news} now={now} />
         </>
     );
 }
