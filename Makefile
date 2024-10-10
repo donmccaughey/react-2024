@@ -19,13 +19,13 @@ sources := \
 	src/App.jsx \
 	src/Footer.jsx \
 	src/Header.jsx \
-	src/index.js \
-	src/Item.js \
+	src/index.jsx \
+	src/Item.jsx \
 	src/Main.jsx
 
 
 tmp/news.js : $(sources) $$(dir $$@) package-lock.json
-	npx esbuild --bundle --sourcemap --outfile=$@ src/index.js
+	npx esbuild --bundle --sourcemap --outfile=$@ src/index.jsx
 
 
 package-lock.json : package.json

@@ -10,7 +10,7 @@ ESBUILD_COMMAND = [
     '--bundle', '--sourcemap', '--outfile=tmp/news.js',
     '--serve=8001', '--servedir=tmp',
     '--watch',
-    'src/index.js',
+    'src/index.jsx',
 ]
 PORT = 9000
 
