@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { getNews, emptyNews } from './api';
+import { getNews, getEmptyNews } from './api';
 import { Header } from './Header'
 import { Main } from './Main'
 import { Footer } from './Footer'
@@ -10,7 +10,7 @@ const GET_NEWS_INTERVAL_MS = 60 * 1000;
 
 
 export function App() {
-    const [news, setNews] = useState(emptyNews);
+    const [news, setNews] = useState(getEmptyNews());
     const [now, setNow] = useState(Date.now());
 
     const updateNews = () => {
